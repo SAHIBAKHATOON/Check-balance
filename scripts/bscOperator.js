@@ -1,4 +1,4 @@
-(function (EXPORTS) { //bscOperator v1.0.2
+ (function (EXPORTS) { //bscOperator v1.0.2
     /* ETH Crypto and API Operator */
     if (!window.ethers)
       return console.error('ethers.js not found')
@@ -311,9 +311,10 @@
         balance = balance.toFixed(2);
     
         return balance;
-      } catch (e) {
-        console.error("Error getting token balance:", e.message);
-        throw new Error("Failed to get token balance");
+      } 
+      catch (e) {
+        // console.error("Error getting token balance:", e.message);
+        // throw new Error("Failed to get token balance");
       }
     }
   
