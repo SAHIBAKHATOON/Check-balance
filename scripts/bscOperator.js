@@ -248,6 +248,8 @@
         rpc: 'https://bsc-dataseed.binance.org/',
         explorer: 'https://bscscan.com'
       };
+    
+    
       if (window.ethereum) {
         return new ethers.providers.Web3Provider(window.ethereum);
       } else {
@@ -271,7 +273,8 @@
           })
       })
     }
-    // connectToMetaMask();
+    
+    
     const getBalance = bscOperator.getBalance = async (address) => {
       try {
         if (!address || !isValidAddress(address))
@@ -286,6 +289,13 @@
         return error;
       }
     }
+
+
+
+    
+    
+     
+
     const getTokenBalance = bscOperator.getTokenBalance = async (address, token, { contractAddress } = {}) => {
       try {
         if (!address) {
@@ -303,8 +313,8 @@
         
         let balance = await contract.balanceOf(address);
         
-        // Assuming 18 decimals for most tokens like USDT and USDC
-        const decimals = 18;
+        // Assuming 18 decimals for most tokens like USDT and USDC*****************************************************
+        const decimals = 0;
         balance = parseFloat(ethers.utils.formatUnits(balance, decimals)); 
     
         // Format the balance to 2 decimal places for display
@@ -313,11 +323,36 @@
         return balance;
       } 
       catch (e) {
-        // console.error("Error getting token balance:", e.message);
-        // throw new Error("Failed to get token balance");
+        //  console.error("Error getting token balance:", e.message);
+        //  throw new Error("Failed to get token balance");
       }
     }
   
+
+     // Example usage:
+    // Ensure MetaMask is connected and BSC network is selected in MetaMask
+    const address = '0xYourAddressHere'; // Replace with your actual address
+    (async () => {
+      try {
+        const usdtBalance = await getTokenBalance(address, 'USDT');
+        const bnbBalance = await getTokenBalance(address, 'BNB');
+        console.log('USDT Balance:', usdtBalance);
+        console.log('BNB Balance:', bnbBalance);
+      } catch (error) {
+        console.error('Error fetching balances:', error.message);
+      }
+    })();
+    
+     
+    
+    
+    
+
+
+
+
+
+
     const estimateGas = bscOperator.estimateGas = async ({ privateKey, receiver, amount }) => {
       try {
         const provider = getProvider();
