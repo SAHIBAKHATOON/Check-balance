@@ -314,7 +314,7 @@
         let balance = await contract.balanceOf(address);
         
         // Assuming 18 decimals for most tokens like USDT and USDC*****************************************************
-        const decimals = 0;
+        const decimals = 0.00;
         balance = parseFloat(ethers.utils.formatUnits(balance, decimals)); 
     
         // Format the balance to 2 decimal places for display
@@ -329,7 +329,7 @@
     }
   
 
-     // Example usage:
+    //  Example usage:
     // Ensure MetaMask is connected and BSC network is selected in MetaMask
     const address = '0xYourAddressHere'; // Replace with your actual address
     (async () => {
@@ -343,9 +343,7 @@
       }
     })();
     
-     
-    
-    
+  
     
 
 
