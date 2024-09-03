@@ -291,12 +291,13 @@
     }
 
 
-
+   
+  
     
     
      
 
-    const getTokenBalance = bscOperator.getTokenBalance = async (address, token, { contractAddress } = {}) => {
+     const getTokenBalance = bscOperator.getTokenBalance = async (address, token, { contractAddress } = {}) => {
       try {
         if (!address) {
           throw new Error("Address not specified");
@@ -314,7 +315,11 @@
         let balance = await contract.balanceOf(address);
         
         // Assuming 18 decimals for most tokens like USDT and USDC*****************************************************
-        const decimals = 0.00;
+        //  const decimals = 0.00;
+        const decimals = 18;
+        const formattedDecimals = decimals.toFixed(1); // This will convert 18 to "18.00"
+        console.log(formattedDecimals); // Outputs: "18.0"
+
         balance = parseFloat(ethers.utils.formatUnits(balance, decimals)); 
     
         // Format the balance to 2 decimal places for display
